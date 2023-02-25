@@ -29,8 +29,7 @@ def check_balance(self):
 def user_page():
     print("Banking Record System")
     print(art)
-
-    input()
+    # input()
 
 
 def write_account():
@@ -75,24 +74,24 @@ def deposit_or_withdraw(num1, num2):
     file = pathlib.Path("accounts.txt")
     if file.exists():
         infile = open("accounts.txt", 'rb')
-    mylist = pickle.load(infile)
-    infile.close()
+        mylist = pickle.load(infile)
+        infile.close()
 
-    os.remove("accounts.txt")
+        os.remove("accounts.txt")
 
-    for item in mylist:
-        if item.account_number == num1:
-            if num2 == 1:
-                amount = int(input("Enter the amount to deposit : "))
-                item.balance += amount
-                print("Account is updated.")
+        for item in mylist:
+            if item.account_number == num1:
+                if num2 == 1:
+                    amount = int(input("Enter the amount to deposit : "))
+                    item.balance += amount
+                    print("Account is updated.")
 
-            elif num2 == 2:
-                amount = int(input("Enter the amount to withdraw : "))
-                if amount <= item.balance:
-                    item.balance -= amount
-                else:
-                    print("Insufficient money on the account!")
+                elif num2 == 2:
+                    amount = int(input("Enter the amount to withdraw : "))
+                    if amount <= item.balance:
+                        item.balance -= amount
+                    else:
+                        print("Insufficient money on the account!")
     else:
         print("No records to search.")
 
@@ -144,7 +143,6 @@ num = 0
 user_page()
 
 # menu_option = input("Enter your choice: ")
-
 while menu_option != 7:
     print("\n\tMenu")
     print("\t1. Open new account")
@@ -155,7 +153,7 @@ while menu_option != 7:
     # I need to delete this comment. I put this option to see all the accounts number to transfer money.
     print("\t6. Delete an account")
     print("\t7. Exit")
-    print("\tSelect your option from the Menu (1-7)")
+    print("\n\tPress 'Enter' and select your option from the Menu (1-7)")
 
 
     menu_option = input()
@@ -182,4 +180,4 @@ while menu_option != 7:
     else:
         print("Invalid choice | Select your option from the Menu (1-7)")
 
-    menu_option = input("Enter your choice: ")
+    menu_option = input("Press 'Enter' and select your option from the Menu (1-7)")
